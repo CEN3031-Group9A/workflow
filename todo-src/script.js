@@ -10,7 +10,8 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.editItem = "";
   
   $scope.addItem = function(event){
-    if (!event || event.key !== "Enter")
+    var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0
+    if (key !== 13)
       return;
 
     console.log("in add");
