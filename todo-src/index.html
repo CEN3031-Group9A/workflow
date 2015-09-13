@@ -15,7 +15,7 @@
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
   
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
+          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-keypress="addItem($event)" ng-model="newItem">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" ng-click="addItem()">
               Add
@@ -24,17 +24,39 @@
           </span>
         </div><!-- /input-group -->
         
-      <h2>stuff i gotta do asap</h2>
+      <h2>
+        stuff i gotta do asap [{{todos.length}} item(s)]
+        <button type="button" class="btn btn-default btn-danger pull-right" ng-click="clear()">
+          <span class="glyphicon glyphicon-erase"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-warning pull-right" ng-click="completeAll()">
+          <span class="glyphicon glyphicon-erase"></span>
+        </button>
+      </h2>
       
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           
-          <span>{{do}}</span>
+          <span style="cursor: pointer;" ng-click="startEdit(do)" ng-hide="custom_show">
+            {{do}}
+          </span>
+          <input class="form-control" type="text" placeholder="Edit item" ng-model="editItem" ng-show="custom_show" ng-keypress="doEditItem($event)">
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
+          <button class="btn pull-right" type="button" ng-click="completeItem(do)">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ul>
 
+      <h2>
+        Completed Activities
+      </h2>
+      <ul class="list-group">
+        <li class="list-group-item clearfix" ng-repeat="fin in done">
+          <span class="done">{{fin}}</span>
         </li>
       </ul>
     </div>
