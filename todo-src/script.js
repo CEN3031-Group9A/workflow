@@ -15,7 +15,7 @@ myApp.controller('MainCtrl', function ($scope){
   }
 
   $scope.addItem = function(event){
-    if (!$scope.validate(event, 13)) // ENTER is keycode 13
+    if (event && !$scope.validate(event, 13)) // ENTER is keycode 13
       return
 
     console.log("in add");
@@ -36,8 +36,8 @@ myApp.controller('MainCtrl', function ($scope){
     this.editItem = item;
   }
 
-  $scope.doEditItem = function (keypress) {
-    if (!$scope.validate(keypress, 13)) // ENTER is keycode 13
+  $scope.doEditItem = function (event) {
+    if (event && !$scope.validate(event, 13)) // ENTER is keycode 13
       return
 
     if (this.editItem !== "")
