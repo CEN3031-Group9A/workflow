@@ -28,10 +28,14 @@
       
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="do in todos">
+        <li class="list-group-item clearfix" ng-repeat="do in todos" ng-show="isDisplayed(do)">
           
           <span>{{do}}</span>
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
+            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+          </button>
+
+          <button class="btn btn-warning pull-right" type="button" ng-click="editItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
 
