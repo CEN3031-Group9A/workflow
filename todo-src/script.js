@@ -20,9 +20,6 @@ myApp.controller('MainCtrl', function ($scope){
     $scope.todos.splice(index, 1);
   }
   
-  //add new feature here
-    
-  
 });
 
 /*************************
