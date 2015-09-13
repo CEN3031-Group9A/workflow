@@ -22,17 +22,21 @@ myApp.controller('MainCtrl', function ($scope){
     $scope.todos.splice(index, 1);
   }
 
-  $scope.editItem = function(item){
-    console.log("in edit");
-    var index = $scope.todos.indexOf(item);
-
-	if (this.visible === true){
-	    if (this.inEditMode === true){
-	  	  this.visible = false;
-		  this.inEditMode = true;
-	    }
-	}
+  $scope.enableEditMode = function(item){
+	this.inEditMode = true;
   }
+
+//  $scope.editItem = function(item){
+//    console.log("in edit");
+//    var index = $scope.todos.indexOf(item);
+//
+//	if (this.visible === true){
+//	    if (this.inEditMode === true){
+//	  	  this.visible = false;
+//		  this.inEditMode = true;
+//	    }
+//	}
+//  }
 
   $scope.isDisplayed = function(li){
 	  return this.visible;
