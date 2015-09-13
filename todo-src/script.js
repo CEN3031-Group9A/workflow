@@ -9,10 +9,14 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.custom_show = false;
   $scope.editItem = "";
   
-  $scope.addItem = function(event){
+  $scope.validate = function(event, keycode){
     var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0
-    if (key !== 13)
-      return;
+    return key === keycode;
+  }
+
+  $scope.addItem = function(event){
+    if (!$scope.validate(event, 13)) // ENTER is keycode 13
+      return
 
     console.log("in add");
     if ($scope.newItem !== ""){
@@ -33,8 +37,8 @@ myApp.controller('MainCtrl', function ($scope){
   }
 
   $scope.doEditItem = function (keypress) {
-    if (!keypress || keypress.key !== "Enter")
-      return;
+    if (!$scope.validate(keypress, 13)) // ENTER is keycode 13
+      return
 
     if (this.editItem !== "")
     {
