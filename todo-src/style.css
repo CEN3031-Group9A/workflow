@@ -2,3 +2,9 @@
 body {
   background: blue;
 }
+
+#todo-list li .completed-true  {
+    color: #ccc;
+    text-decoration: line-through;
+}
+
