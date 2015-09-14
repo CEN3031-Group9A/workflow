@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>
+			Angular Practice
+		</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="script2.js"></script>
+		</script>
+		<style>
+			body {
+				background-color: grey;
+				color: pink;
+			}
+			h1 {
+				color: pink;
+			}
+			.table-striped>tbody>tr:nth-child(odd)>td, 
+			.table-striped>tbody>tr:nth-child(odd)>th {
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body ng-app="app">
+		<h1 class="text-center">Herro</h1>
+		<div id="div1" class="col-xs-6 col-xs-offset-3">
+			<input type="text" class="form-control" placeholder="Type Here"> 
+		</div>
+		<!--this is some sample stuff from docs.angularjs.org/tutorial/step_01 -->
+		<div class="col-xs-6 col-xs-offset-3" ng-controller="PhoneListCtrl">
+			<p>
+				Hello {{name}}
+			</p>
+
+			<p>
+				Total number of phones: {{phones.length}}
+			</p>
+			<ul>
+				<li ng-repeat="phone in phones">
+					<span>{{phone.name}}</span>
+					<p>{{phone.snippet}}</p>
+				</li>
+			</ul>
+			<table class="table table-striped table-condensed">
+				<tr><th>row number</th><td></td></tr>
+				<tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i}}</td><td>herp</td></tr>
+			</table>
+		</div>
+	</body>
+</html>
