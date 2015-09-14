@@ -15,11 +15,17 @@ myApp.controller('MainCtrl', function ($scope){
   }
     
   $scope.deleteItem = function(item){
-    console.log("in delete");
+    console.log(item);
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
   }
   
+  $scope.deleteComplete= function(){
+	var completed = document.getElementsByClassName('completed-true');
+	for(i=0;i<completed.length;i++){
+		 $scope.todos.splice($scope.todos.indexOf(completed[i]).innerHTML, 1);
+	}
+  }
 });
 
 /*************************

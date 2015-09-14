@@ -30,7 +30,7 @@
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           
-          <span class="completed-{{task.completed}}">{{do}}</span>
+          <span id=class="completed-{{task.completed}}">{{do}}</span>
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
@@ -40,6 +40,7 @@
 
         </li>
       </ul>
+	  <button type="button" class="warning" ng-click="deleteComplete()">Clear Completed Items</button>
     </div>
     
   </body>
