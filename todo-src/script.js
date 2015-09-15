@@ -54,17 +54,13 @@ myApp.controller('MainCtrl', function ($scope){
 
 
   $scope.keyConfirmEdit = function(event){
-	  if (event && !$scope.validate(event, 13))
+	  if (event && !$scope.validateKey(event, 13))
 		  return
 	  var index = $scope.todos.indexOf(this.do);
 	  $scope.todos[index] = this.editItem;
 	  this.editItem = "";
 	  this.inEditMode = false;
 
-  }
-  $scope.validate = function(event, keycode){
-      var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0
-      return key === keycode;
   }
 //  $scope.editItem = function(item){
 //    console.log("in edit");
