@@ -1,4 +1,17 @@
 /* Styles go here */
 body {
-  background: green;
+  background: #AEA9B8;
+}
+
+
+.high{
+	background-color: red;
+}
+
+.medium{
+	background-color:orange;
+}
+
+.low{
+	background-color:green;
 }

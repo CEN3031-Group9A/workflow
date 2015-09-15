@@ -8,13 +8,49 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.visible = true;
   $scope.inEditMode = false;
   $scope.editItem = "";
+  $scope.priority = -1;
   
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
-      $scope.todos.push($scope.newItem);
-      $scope.newItem = "";
+      if($scope.priority == 0){
+       $scope.todos.push($scope.newItem);
+       alert("high");
+       $scope.newItem = "";
+       $scope.priority = -1;
+      }
+      else if($scope.priority == 1){
+        $scope.todos.push($scope.newItem);
+        alert('medium');
+        $scope.newItem = "";
+        $scope.priority = -1;
+      }
+      else if($scope.priority == 2){
+        $scope.todos.push($scope.newItem);
+        alert('low');
+        $scope.newItem = "";
+        scope.priority = -1;
+      }
+      else{
+        alert("Enter something, damn it");
+      }
     }
+  }
+
+  //Priority Buttons
+  $scope.highPriority = function(){
+    $scope.priority = 0;
+    $scope.addItem();
+  }
+
+  $scope.mediumPriority = function(){
+    $scope.priority = 1;
+    $scope.addItem();
+  }
+
+  $scope.lowPriority = function(){
+    $scope.priority = 2;
+    $scope.addItem();
   }
 
   $scope.deleteItem = function(item){
