@@ -22,8 +22,11 @@ myApp.controller('MainCtrl', function ($scope){
   
   $scope.deleteComplete= function(){
 	var completed = document.getElementsByClassName('completed-true');
+	
 	for(i=0;i<completed.length;i++){
-		 $scope.todos.splice($scope.todos.indexOf(completed[i]).innerHTML, 1);
+	console.log(completed + " " + $scope.todos.indexOf(completed[i].innerHTML) + " " + completed[i].innerHTML + " " + completed.length);
+		if($scope.todos.indexOf(completed[i].innerHTML)!=-1)
+		 $scope.todos.splice($scope.todos.indexOf(completed[i].innerHTML), 1);
 	}
   }
 });
