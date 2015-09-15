@@ -11,12 +11,12 @@ myApp.controller('MainCtrl', function ($scope){
   
   $scope.addItem = function(){
     console.log("in add");
-    if ($scope.newItem !== ""){
+    if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
       $scope.todos.push($scope.newItem);
       $scope.newItem = "";
     }
   }
-    
+
   $scope.deleteItem = function(item){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
@@ -25,7 +25,6 @@ myApp.controller('MainCtrl', function ($scope){
 
   $scope.enableEditMode = function(item){
 	this.inEditMode = true;
-//	this.visible = !this.visible;
   }
 
   $scope.isDisplayed = function(li){
@@ -70,19 +69,4 @@ myApp.controller('MainCtrl', function ($scope){
 //	    }
 //	}
 //  }
-
-    
-  
 });
-
-/*************************
- * Homework (not rly):
- * - "enter" button functionality instead of clicking button
- * - edit button functionality
- * - button to mark item as "complete"
- * - have a total number of items at the top
- * - make it prettier
- * - add a due date
- * - add reminder (setInterval)
- * 
- * *********************/
