@@ -45,7 +45,7 @@
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos | filter: query as results">
 			<!-- list item NOT IN EDIT MODE -->
-			<span style="cursor: pointer;" ng-class="{'0':priority == 'high'}  ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
+			<span style="cursor: pointer;" ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
 
 			<button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-hide="inEditMode">
 				<span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
