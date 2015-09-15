@@ -28,16 +28,28 @@
       
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="do in todos" ng-show="isDisplayed(do)">
-          
-          <span ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
-          <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
-            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-          </button>
+        <li class="list-group-item clearfix" ng-repeat="do in todos">
+			<!-- list item NOT IN EDIT MODE -->
+			<span ng-hide="inEditMode" ng-click="enableEditMode(do)" ng-hide="inEditMode">{{do}}</span>
 
-          <button class="btn btn-warning pull-right" type="button" ng-click="editItem(do)">
-            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-          </button>
+			<button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-hide="inEditMode">
+				<span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+			</button>
+
+			<button class="btn btn-warning pull-right" type="button" ng-click="editItem(do)" ng-hide="inEditMode">
+          	  <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+          	</button>
+
+			<!-- list item in edit mode -->
+			<input type="text" class="form-control" placeholder={{do}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
+
+			<button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(do)" ng-show="inEditMode">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			</button>
+
+			<button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(do)" ng-show="inEditMode">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</button>
 
         </li>
       </ul>
