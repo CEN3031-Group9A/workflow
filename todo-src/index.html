@@ -11,9 +11,9 @@
 
   <body ng-app="app">
     <h1 class="text-center">My little to do app!</h1>
-    
+
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
-  
+
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem" ng-keypress="addItem($event)">
           <span class="input-group-btn">
@@ -23,22 +23,43 @@
             </button>
           </span>
         </div><!-- /input-group -->
-        
-      <h2>stuff i gotta do asap</h2>
-      
+
+        <!--A simple count tracker that displays modifies text to allow for proper grammer.
+        I created a query stored as results next to the ng-repeat below that has a property .length
+        which can be called to get the length of the list. Documentation for ng-pluralize can be
+        found on this link: https://docs.angularjs.org/api/ng/directive/ngPluralize.  -->
+      <h2> There  <ng-pluralize count="results.length" when=
+                  "{  '0'     :  'is nothing',
+                      '1'     :  'is 1 thing',
+                      'other' :   'are {{results.length}} things' }" >
+                  </ng-pluralize>
+          I need to do.
+      </h2>
+
+
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="do in todos">
-          
-          <span>{{do}}</span>
-          <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
-            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-          </button>
+        <li class="list-group-item clearfix" ng-repeat="do in todos | filter: query as results">
+			<!-- list item NOT IN EDIT MODE -->
+			<span style="cursor: pointer;" ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
+
+			<button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-hide="inEditMode">
+				<span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+			</button>
+
+			<!-- list item in edit mode -->
+			<input type="text" class="form-control" placeholder={{do}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
+
+			<button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(do)" ng-show="inEditMode">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			</button>
+
+			<button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(do)" ng-show="inEditMode">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</button>
 
         </li>
       </ul>
     </div>
-    
   </body>
-
 </html>
