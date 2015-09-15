@@ -47,10 +47,6 @@
 				<span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
 			</button>
 
-			<button class="btn btn-warning pull-right" type="button" ng-click="editItem(do)" ng-hide="inEditMode">
-          	  <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-          	</button>
-
 			<!-- list item in edit mode -->
 			<input type="text" class="form-control" placeholder={{do}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
 
