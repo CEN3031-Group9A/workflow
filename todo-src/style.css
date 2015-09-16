@@ -1,6 +1,18 @@
 /* Styles go here */
 body {
-  background: blue;
+  background: #AEA9B8;
+}
+
+.high{
+	background-color: red;
+}
+
+.medium{
+	background-color:orange;
+}
+
+.low{
+	background-color:green;
 }
 
 #todo-list li .completed-true  {
