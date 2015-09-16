@@ -15,8 +15,7 @@
     <div id="todo" class="col-xs-6 col-xs-offset-3" ng-controller="MainCtrl">
 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem">
-
+          <input type="text" class="form-control" placeholder="Item to add to todo list" ng-model="newItem" ng-keypress="addItem($event)">
           <!--Priority Button Group -->
           <span class="input-group-btn">
                 <button type="button" class="btn btn-danger"  ng-click="highPriority()">High</button>
@@ -25,7 +24,6 @@
           <!--End Priority Button Group -->
 
           </span>
-
         </div><!-- /input-group -->
 
         <!--A simple count tracker that displays modifies text to allow for proper grammer.

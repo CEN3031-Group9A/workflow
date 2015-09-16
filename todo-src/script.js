@@ -8,28 +8,36 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.visible = true;
   $scope.inEditMode = false;
   $scope.editItem = "";
-  $scope.priority = -1;
+  $scope.priority = 2;
   priorityArr = ["High","Medium","Low"];
   
-  $scope.addItem = function(){
+  // Returns true IFF the keycode is equal to specified keycode
+  $scope.validateKey = function (event, keycode) {
+    var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0
+    return key === keycode;
+  }
+  
+  $scope.addItem = function(event){
+    if (event && !$scope.validateKey(event, 13))
+      return;
     console.log("in add");
     if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
       if($scope.priority == 0){
         $scope.todos.push(priorityArr[$scope.priority] + " Priority:  "  + $scope.newItem);
 
        $scope.newItem = "";
-       $scope.priority = -1;
+       $scope.priority = 2;
       }
       else if($scope.priority == 1){
         $scope.todos.push(priorityArr[$scope.priority] + " Priority:  "  + $scope.newItem);
         $scope.newItem = "";
-        $scope.priority = -1;
+        $scope.priority = 2;
       }
       else if($scope.priority == 2){
          $scope.todos.push(priorityArr[$scope.priority] + " Priority:  " + $scope.newItem);
         
         $scope.newItem = "";
-        scope.priority = -1;
+        $scope.priority = 2;
       }
       else{
         alert("Enter something, damn it");
@@ -82,17 +90,13 @@ myApp.controller('MainCtrl', function ($scope){
 
 
   $scope.keyConfirmEdit = function(event){
-    if (event && !$scope.validate(event, 13))
-      return
-    var index = $scope.todos.indexOf(this.do);
-    $scope.todos[index] = this.editItem;
-    this.editItem = "";
-    this.inEditMode = false;
+	if (event && !$scope.validateKey(event, 13))
+	    return
+	var index = $scope.todos.indexOf(this.do);
+	$scope.todos[index] = this.editItem;
+	this.editItem = "";
+	this.inEditMode = false;
 
-  }
-  $scope.validate = function(event, keycode){
-      var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0
-      return key === keycode;
   }
 //  $scope.editItem = function(item){
 //    console.log("in edit");
