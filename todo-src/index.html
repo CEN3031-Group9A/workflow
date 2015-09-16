@@ -40,86 +40,31 @@
           I need to do.
       </h2>
 
-      <!--High Priority Section-->
+
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="high in highP | filter: query as results">
-			<!-- list item NOT IN EDIT MODE -->
-			<span style="cursor: pointer;" ng-hide="inEditMode" ng-click="enableEditMode(high)">{{high}}</span>
-
-			<button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(high)" ng-hide="inEditMode">
-				<span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-			</button>
-
-			<!-- list item in edit mode -->
-			<input type="text" class="form-control" placeholder={{high}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
-
-			<button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(high)" ng-show="inEditMode">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-			</button>
-
-			<button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(high)" ng-show="inEditMode">
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-			</button>
-
-        </li>
-      </ul>
-      <!--End High Priority Section-->
-
-      <!--Medium Priority Section-->
-         <ul class="list-group">
-        <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="med in medP | filter: query as results">
+        <li class="list-group-item clearfix" ng-repeat="do in todos | filter: query as results">
       <!-- list item NOT IN EDIT MODE -->
-      <span style="cursor: pointer;" ng-hide="inEditMode" ng-click="enableEditMode(med)">{{med}}</span>
+      <span style="cursor: pointer;"\  ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
 
-      <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(med)" ng-hide="inEditMode">
+      <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-hide="inEditMode">
         <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
       </button>
 
       <!-- list item in edit mode -->
-      <input type="text" class="form-control" placeholder={{med}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
+      <input type="text" class="form-control" placeholder={{do}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
 
-      <button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(med)" ng-show="inEditMode">
+      <button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(do)" ng-show="inEditMode">
         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
       </button>
 
-      <button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(med)" ng-show="inEditMode">
+      <button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(do)" ng-show="inEditMode">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
 
         </li>
       </ul>
-      <!--End Medium Priority Section-->
-
-
-       <!--Low Priority Section-->
-         <ul class="list-group">
-        <!-- http://www.w3schools.com/css/css_float.asp -->
-        <li class="list-group-item clearfix" ng-repeat="low in lowP | filter: query as results">
-      <!-- list item NOT IN EDIT MODE -->
-      <span style="cursor: pointer;" ng-hide="inEditMode" ng-click="enableEditMode(low)">{{low}}</span>
-
-      <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(low)" ng-hide="inEditMode">
-        <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-      </button>
-
-      <!-- list item in edit mode -->
-      <input type="text" class="form-control" placeholder={{low}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
-
-      <button class="btn btn-success pull-right" type="button" ng-click="confirmEdit(low)" ng-show="inEditMode">
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-      </button>
-
-      <button class="btn btn-danger pull-right" type="button" ng-click="cancelEdit(low)" ng-show="inEditMode">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      </button>
-
-        </li>
-      </ul>
-      <!--End Low Priority Section-->
-
-
     </div>
   </body>
 </html>
+

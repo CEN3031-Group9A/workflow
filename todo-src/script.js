@@ -3,34 +3,30 @@
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
-
-  $scope.highP = ["Learn Angular", "Learn node"];
-  $scope.medP = ["Med1","Med2"];
-  $scope.lowP = ["Low1","Low2"];
-
+  $scope.todos = ["Learn Angular", "Learn node"];
   $scope.newItem = "";
   $scope.visible = true;
   $scope.inEditMode = false;
   $scope.editItem = "";
   $scope.priority = -1;
+  priorityArr = ["High","Medium","Low"];
   
   $scope.addItem = function(){
     console.log("in add");
     if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
       if($scope.priority == 0){
-       $scope.todos.push($scope.newItem);
+        $scope.todos.push(priorityArr[$scope.priority] + "Priority:  "  + $scope.newItem);
        alert("high");
        $scope.newItem = "";
        $scope.priority = -1;
       }
       else if($scope.priority == 1){
-        $scope.todos.push($scope.newItem);
-        alert('medium');
+        $scope.todos.push(priorityArr[$scope.priority] + "Priority:  "  + $scope.newItem);
         $scope.newItem = "";
         $scope.priority = -1;
       }
       else if($scope.priority == 2){
-        $scope.todos.push($scope.newItem);
+         $scope.todos.push(priorityArr[$scope.priority] + "Priority:  " + $scope.newItem);
         alert('low');
         $scope.newItem = "";
         scope.priority = -1;
@@ -64,34 +60,34 @@ myApp.controller('MainCtrl', function ($scope){
   }
 
   $scope.enableEditMode = function(item){
-	this.inEditMode = true;
+  this.inEditMode = true;
   }
 
   $scope.isDisplayed = function(li){
-	  return this.visible;
+    return this.visible;
   }
   $scope.confirmEdit = function(item){
-	  console.log(this.editItem);
-	  var index = $scope.todos.indexOf(item);
-	  $scope.todos[index] = this.editItem;
-	  this.editItem = "";
-	  this.inEditMode = false;
+    console.log(this.editItem);
+    var index = $scope.todos.indexOf(item);
+    $scope.todos[index] = this.editItem;
+    this.editItem = "";
+    this.inEditMode = false;
 
   }
 
   $scope.cancelEdit = function(item){
-	  this.inEditMode = false;
-	  this.editItem = "";
+    this.inEditMode = false;
+    this.editItem = "";
   }
 
 
   $scope.keyConfirmEdit = function(event){
-	  if (event && !$scope.validate(event, 13))
-		  return
-	  var index = $scope.todos.indexOf(this.do);
-	  $scope.todos[index] = this.editItem;
-	  this.editItem = "";
-	  this.inEditMode = false;
+    if (event && !$scope.validate(event, 13))
+      return
+    var index = $scope.todos.indexOf(this.do);
+    $scope.todos[index] = this.editItem;
+    this.editItem = "";
+    this.inEditMode = false;
 
   }
   $scope.validate = function(event, keycode){
@@ -102,11 +98,12 @@ myApp.controller('MainCtrl', function ($scope){
 //    console.log("in edit");
 //    var index = $scope.todos.indexOf(item);
 //
-//	if (this.visible === true){
-//	    if (this.inEditMode === true){
-//	  	  this.visible = false;
-//		  this.inEditMode = true;
-//	    }
-//	}
+//  if (this.visible === true){
+//      if (this.inEditMode === true){
+//        this.visible = false;
+//      this.inEditMode = true;
+//      }
+//  }
 //  }
 });
+
