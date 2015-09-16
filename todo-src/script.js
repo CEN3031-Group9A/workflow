@@ -15,19 +15,19 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in add");
     if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
       if($scope.priority == 0){
-        $scope.todos.push(priorityArr[$scope.priority] + "Priority:  "  + $scope.newItem);
-       alert("high");
+        $scope.todos.push(priorityArr[$scope.priority] + " Priority:  "  + $scope.newItem);
+
        $scope.newItem = "";
        $scope.priority = -1;
       }
       else if($scope.priority == 1){
-        $scope.todos.push(priorityArr[$scope.priority] + "Priority:  "  + $scope.newItem);
+        $scope.todos.push(priorityArr[$scope.priority] + " Priority:  "  + $scope.newItem);
         $scope.newItem = "";
         $scope.priority = -1;
       }
       else if($scope.priority == 2){
-         $scope.todos.push(priorityArr[$scope.priority] + "Priority:  " + $scope.newItem);
-        alert('low');
+         $scope.todos.push(priorityArr[$scope.priority] + " Priority:  " + $scope.newItem);
+        
         $scope.newItem = "";
         scope.priority = -1;
       }
