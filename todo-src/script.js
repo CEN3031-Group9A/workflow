@@ -21,7 +21,8 @@ myApp.controller('MainCtrl', function ($scope){
     if (event && !$scope.validateKey(event, 13))
       return;
     console.log("in add");
-    if ($scope.newItem !== "" && $scope.todos.indexOf($scope.newItem) === -1){
+	console.log($scope.todos.indexOf($scope.newItem));
+    if ($scope.newItem !== "" && $scope.todos.indexOf(priorityArr[$scope.priority] + " Priority:  " + $scope.newItem) === -1){
       if($scope.priority == 0){
         $scope.todos.push(priorityArr[$scope.priority] + " Priority:  "  + $scope.newItem);
 

@@ -43,13 +43,13 @@
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos | filter: query as results">
       <!-- list item NOT IN EDIT MODE -->
+	  <input type="checkbox" type="button" ng-model="task.completed" ng-hide="inEditMode">
+	  <span class="completed-{{task.completed}}">{{task.name}}</span>
 	  <span style="cursor: pointer;" class="completed-{{task.completed}}" ng-hide="inEditMode" ng-click="enableEditMode(do)">{{do}}</span>
 
       <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)" ng-hide="inEditMode">
         <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
       </button>
-	  <input type="checkbox" type="button" ng-model="task.completed" ng-hide="inEditMode">
-	  <span class="completed-{{task.completed}}">{{task.name}}</span>
 
       <!-- list item in edit mode -->
       <input type="text" class="form-control" placeholder={{do}} ng-model="editItem" ng-show="inEditMode" ng-keypress="keyConfirmEdit($event)">
