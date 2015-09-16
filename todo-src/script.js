@@ -3,10 +3,11 @@
 var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
-  $scope.todos = ["Learn Angular", "Learn node"];
-  $scope.highP = [];
-  $scope.medP = [];
-  $scope.lowP = []
+
+  $scope.highP = ["Learn Angular", "Learn node"];
+  $scope.medP = ["Med1","Med2"];
+  $scope.lowP = ["Low1","Low2"];
+
   $scope.newItem = "";
   $scope.visible = true;
   $scope.inEditMode = false;
